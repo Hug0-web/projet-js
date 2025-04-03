@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar</title>
+    <link rel="stylesheet" href="sidebar.css">
+</head>
+<body>
+    <div class="all">
+        <div class="sidebar">
+            <h1>NutriTrack</h1>
+            <a href="#dashboard" class="nav-link">Dashboard</a>
+            <a href="#meals" class="nav-link">Repas</a>
+            <a href="#goals" class="nav-link">Goals</a>
+        </div>
+        <div class="main-content">
+            <div id="calorie" class="nutriment">
+                <p></p>
+            </div>
+            <div id="proteine" class="nutriment">
+
+            </div>
+            <div id="glucide" class="nutriment">
+
+            </div>
+            <div id="lipide" class="nutriment">
+
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    (
+        async function() {
+            const response = await fetch('http://localhost:3030/meals');
+            const data = await response.json();
+
+            document.getElementById('calorie').textContent=`${data.totalNutrients.calories}`
+            document.getElementById('proteine').textContent=`${data.totalNutrients.proteines}`
+            document.getElementById('glucide').textContent=`${data.totalNutrients.glucides}`
+            document.getElementById('lipide').textContent=`${data.totalNutrients.lipides}`
+        }
+    )();
+
+   
+</script>
+</html>
